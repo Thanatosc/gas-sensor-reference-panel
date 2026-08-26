@@ -80,9 +80,6 @@ configs/                            frozen run configurations
 src/gasdrift/                       split, recalibration and metric code
 scripts/                            runners, analysis, figure/table/LaTeX builds
 results/                            derived summaries, figures, tables
-manuscript/cils_draft.md            current manuscript
-manuscript/uci360_tables.md         6 main + 5 supplementary tables
-latex/                              elsarticle build, compiles with pdflatex
 artifacts/UCI360_*.md               findings, retraction record, figure package
 ```
 
@@ -128,33 +125,30 @@ Dense budget grid, then the ten-draw replication that overturned the threshold
 .\.venv\Scripts\python.exe scripts\summarize_seed_sensitivity.py
 ```
 
-Mechanism analysis, figures, tables and the LaTeX build:
+Mechanism analysis, figures and tables:
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\analyze_open_items.py --conditioning-budgets 2 3 4 5 6 8
 .\.venv\Scripts\python.exe scripts\generate_uci360_figures.py
 .\.venv\Scripts\python.exe scripts\generate_uci360_tables.py
-.\.venv\Scripts\python.exe scripts\build_latex.py
 ```
+
+`generate_uci360_tables.py` writes to `manuscript/uci360_tables.md`, creating the
+directory if needed. The manuscript itself is not part of this repository (see
+below).
 
 ## Verification
 
-Two audits are part of the build and both exit non-zero on failure:
-
 ```powershell
 .\.venv\Scripts\python.exe scripts\verify_draft_numbers.py   # 141 numeric claims
-.\.venv\Scripts\python.exe scripts\verify_latex_build.py     # compiled PDF integrity
 ```
 
-`verify_draft_numbers.py` restates every quantitative claim in the manuscript as
-a literal and recomputes it from the frozen result files. Run it after any edit
-that touches a number. Its draw-replication section hardcodes the ten-draw
-values, so it is *expected* to fail if the draw count changes — that failure is
-the reminder to update the corresponding sentences.
-
-`verify_latex_build.py` audits the compiled PDF's text layer for damage that
-still compiles: eaten backslashes, unrendered markup, control characters,
-missing floats.
+Every quantitative claim in the manuscript is restated here as a literal and
+recomputed from the frozen result files; the script exits non-zero on any
+mismatch. It needs no manuscript file, so it runs against this repository alone
+and is the check that matters for reproduction. Its draw-replication section
+hardcodes the ten-draw values, so it is *expected* to fail if the draw count
+changes — that failure is the reminder to update the corresponding sentences.
 
 ## Reproducibility notes
 
@@ -180,7 +174,18 @@ Derived tables, figures, protocol documents and reports: CC BY 4.0.
 
 Retained for provenance and not part of the current claim:
 `results/kill_test*`, `results/repro_uci*`, `results/confirmation_worner_v1`,
-`results/repro_worner_v1`, `results/sensitivity_worner_*`,
-`manuscript/measurement_blind_draft.md`, `manuscript/measurement_tables.md`,
-`results/figures/`. The `.cils_draft_v1_backup.md` file preserves the version of
-the current manuscript that still asserted the four-reference floor.
+`results/repro_worner_v1`, `results/sensitivity_worner_*`, `results/figures/`.
+
+## What is deliberately not here
+
+The manuscript, its LaTeX build, and the manuscript-production scripts are not
+released in this repository. Double-anonymised review requires that
+reviewer-visible material not be linkable to author identity, and this repository
+is public under a named account; shipping the manuscript would defeat that. The
+v1.0.0 Zenodo code record likewise contained no manuscript. Everything the
+manuscript cites is regenerable from the code and results that are here.
+
+Also excluded: raw and normalised corpora (public sources, provenance JSON with
+checksums retained), the row-level benchmark tables for the ten draws (separate
+dataset record), third-party PDFs, and material from the withdrawn *Measurement*
+submission.

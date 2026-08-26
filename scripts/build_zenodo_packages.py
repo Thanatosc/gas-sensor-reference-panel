@@ -40,6 +40,16 @@ AFFILIATION = "School of Computing and Artificial Intelligence, Southwest Jiaoto
 # Fixed timestamp so rebuilds are byte-identical (1980-01-01, the zip epoch).
 ZIP_DATE = (1980, 1, 1, 0, 0, 0)
 
+# Never released: material tied to the withdrawn Measurement submission, and the
+# manuscript-production tooling that is unusable without the manuscript itself.
+# Kept in step with .gitignore; both exclusions exist for the same reason.
+EXCLUDE_NAMES = (
+    "measurement",
+    "build_latex.py",
+    "verify_latex_build.py",
+    "double_anonymized_repository_plan",
+)
+
 CODE_INCLUDE: list[tuple[str, str]] = [
     ("README.md", "README.md"),
     ("requirements.txt", "requirements.txt"),
@@ -51,8 +61,6 @@ CODE_TREES: list[tuple[str, str]] = [
     ("scripts", "scripts"),
     ("configs", "configs"),
     ("docs", "docs"),
-    ("manuscript", "manuscript"),
-    ("latex", "latex"),
 ]
 # Derived results the manuscript cites, excluding row-level benchmark tables.
 CODE_RESULT_GLOBS = [
@@ -117,6 +125,8 @@ def collect_tree(rel: str) -> list[Path]:
         # between two builds changes the zip.
         if p.name.startswith("_"):
             continue
+        if any(pat in p.name for pat in EXCLUDE_NAMES):
+            continue
         if p.suffix.lower() in keep_suffix or p.name.startswith("."):
             if p.name.startswith(".") and p.name != ".gitkeep":
                 continue
@@ -178,11 +188,14 @@ included as artifacts/UCI360_DRAW_SENSITIVITY.md.</p>
 
 <p>Contents: the frozen protocol, run configurations, split/recalibration/metric
 implementation, benchmark and analysis runners, the ten-draw replication driver,
-derived summaries and decision cells, five vector figures, six main and five
-supplementary tables, the manuscript, and an elsarticle LaTeX build. Two audit
-scripts are included and exit non-zero on failure: one restates 141 quantitative
-claims from the manuscript and recomputes each from the frozen result files, the
-other audits the compiled PDF text layer for damage that still compiles.</p>
+derived summaries and decision cells, and five vector figures. An audit script is
+included that restates 141 quantitative claims from the manuscript as literals and
+recomputes each from the frozen result files, exiting non-zero on any mismatch.</p>
+
+<p>The manuscript itself is not included. Under double-anonymised review,
+reviewer-visible material must not be linkable to author identity; the tables and
+figures the manuscript cites are regenerable from the code and results deposited
+here, and this matches v1.0.0, which also contained no manuscript.</p>
 
 <p>Row-level benchmark tables for the ten panel draws are archived separately as a
 dataset record, following the convention that large numerical arrays are deposited

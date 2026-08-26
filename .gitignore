@@ -32,14 +32,35 @@ submission_measurement/
 # Downloaded third-party papers: not ours to redistribute.
 artifacts/papers/
 
-# --- withdrawn-submission artefacts -----------------------------------------
-# The Measurement typeset draft (8.3 MB) and its reject letter are kept locally
-# as the record of the withdrawn submission but are not part of the code release.
+# --- the manuscript itself is NOT published here -----------------------------
+# docs/double_anonymized_repository_plan.md requires that reviewer-visible
+# material not be linkable to author identity. This repository is public under a
+# named account, so shipping the manuscript would let a reviewer identify the
+# author from a distinctive phrase and would defeat double-anonymised review.
+# The v1.0.0 Zenodo code record likewise contained no manuscript directory.
+# Tables and figures the manuscript cites are regenerable: see
+# scripts/generate_uci360_tables.py and scripts/generate_uci360_figures.py.
+manuscript/
+latex/
+
+# Manuscript-production tooling, unusable without the two directories above.
+scripts/build_latex.py
+scripts/verify_latex_build.py
+
+# --- withdrawn Measurement submission ---------------------------------------
+# Retained locally as the record of the withdrawn submission, not released.
 MEAS-*.pdf
 reject*
 claude --resume*
 The VLDB Journal
 When Do Zero-Shot*
+artifacts/MEASUREMENT_SUBMISSION_CHECKLIST.md
+configs/measurement_venue_profile.yaml
+docs/measurement_official_check.md
+docs/measurement_paper_outline.md
+docs/paper_positioning_measurement.md
+docs/revised_protocol_measurement.md
+docs/double_anonymized_repository_plan.md
 
 # --- LaTeX build intermediates ----------------------------------------------
 latex/*.aux
