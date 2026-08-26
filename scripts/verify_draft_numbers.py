@@ -302,6 +302,103 @@ mae_bad = c[(c.budget.isin([4, 5, 6])) & (c.mae_ratio > 2)]
 chk("F mae holdout is one NOx cell", 1, int(mae_bad.gas_id.nunique()))
 chk("F mae holdout gas", "NOx", str(mae_bad.gas_id.iloc[0]))
 
+# ---------------------------------------------------------------- G
+# Decomposition of H1's pooled coefficient, added after the self-review found that
+# the pre-specified pooled figure is largely a between-analyte contrast.
+if pooled is not None:
+    HELD = [10, 11, 12, 13]
+    FIT = [4, 5, 6, 7, 8, 9]
+    pl = pooled.assign(delta=pooled.frozen_nrmse - pooled.light_nrmse)
+
+    # analyte medians that the pooling exploits, N=5 all windows, ten draws
+    med = pl[(pl.budget == 5) & np.isfinite(pl.d_ref)].groupby("gas_id")
+    chk("G median d_ref CO", 0.50, round(float(med.d_ref.median()["CO"]), 2), 0.006)
+    chk("G median d_ref NO2", 1.15, round(float(med.d_ref.median()["NO2"]), 2), 0.006)
+    chk("G median d_ref NOx", 4.24, round(float(med.d_ref.median()["NOx"]), 2), 0.006)
+    chk("G median benefit NO2", 0.012, round(float(med.delta.median()["NO2"]), 3))
+    chk("G median benefit NOx", 0.167, round(float(med.delta.median()["NOx"]), 3))
+    chk("G analyte order monotone in d_ref", True,
+        list(med.d_ref.median().sort_values().index) == ["CO", "NO2", "NOx"])
+    chk("G analyte order monotone in benefit", True,
+        list(med.delta.median().sort_values().index) == ["CO", "NO2", "NOx"])
+
+    # within-analyte rank correlation on held-out, ten draws pooled
+    h = pl[(pl.budget == 5) & pl.target_batch.isin(HELD) & np.isfinite(pl.d_ref)].copy()
+    h["dr"] = h.groupby("gas_id").d_ref.rank()
+    h["br"] = h.groupby("gas_id").delta.rank()
+    r_wi, p_wi = spearmanr(h.dr, h.br)
+    chk("G within-analyte rho held-out", 0.192, round(float(r_wi), 3))
+    chk("G within-analyte p < 1e-3", True, bool(p_wi < 1e-3))
+
+    # per analyte on held-out, ten draws pooled
+    for gas, expect in [("CO", 0.260), ("NO2", 0.621), ("NOx", -0.305)]:
+        s = h[h.gas_id == gas]
+        r, q = spearmanr(s.d_ref, s.delta)
+        chk(f"G held-out rho {gas}", expect, round(float(r), 3))
+        chk(f"G held-out n {gas}", 120, int(len(s)))
+    s = h[h.gas_id == "NOx"]
+    _, q_nox = spearmanr(s.d_ref, s.delta)
+    chk("G NOx negative and significant", True, bool(q_nox < 1e-3))
+
+    # NOx reverses between window sets
+    f = pl[(pl.budget == 5) & pl.target_batch.isin(FIT) & np.isfinite(pl.d_ref)]
+    fn = f[f.gas_id == "NOx"]
+    r_fit, _ = spearmanr(fn.d_ref, fn.delta)
+    chk("G NOx rho rule-fitting", 0.714, round(float(r_fit), 3))
+    chk("G NOx reverses sign across window sets", True, bool(r_fit > 0 > q_nox * 0 + r))
+
+    # within-analyte association strengthens with budget
+    prof = {}
+    for b in (2, 5, 50):
+        s2 = pl[(pl.budget == b) & np.isfinite(pl.d_ref)].copy()
+        s2["dr"] = s2.groupby("gas_id").d_ref.rank()
+        s2["br"] = s2.groupby("gas_id").delta.rank()
+        r2, _ = spearmanr(s2.dr, s2.br)
+        prof[b] = round(float(r2), 3)
+    chk("G within-analyte rho at N=2", 0.094, prof[2])
+    chk("G within-analyte rho at N=5", 0.464, prof[5])
+    chk("G within-analyte rho at N=50", 0.835, prof[50])
+    chk("G within-analyte rises with budget", True,
+        prof[2] < prof[5] < prof[50])
+
+    # d_ref overlaps the frozen model's held-out error
+    n5 = pl[(pl.seed == PRIMARY_SEED) & (pl.budget == 5) & np.isfinite(pl.d_ref)]
+    r_df, _ = spearmanr(n5.d_ref, n5.frozen_nrmse)
+    r_fb, _ = spearmanr(n5.frozen_nrmse, n5.delta)
+    chk("G rho(d_ref, frozen nRMSE)", 0.841, round(float(r_df), 3))
+    chk("G rho(frozen nRMSE, benefit)", 0.865, round(float(r_fb), 3))
+    chk("G frozen error predicts at least as well", True, bool(r_fb > 0.814))
+
+    # N=2 median by analyte, ten draws pooled
+    b2 = pl[pl.budget == 2].groupby("gas_id").ratio.median()
+    chk("G n=2 median CO", 1.107, round(float(b2["CO"]), 3))
+    chk("G n=2 median NO2", 1.092, round(float(b2["NO2"]), 3))
+    chk("G n=2 median NOx", 0.639, round(float(b2["NOx"]), 3))
+    chk("G n=2 two analytes above 1", 2, int((b2 > 1).sum()))
+
+    # the seed moves the held-out split, not only the panel
+    fz = {}
+    for seed, part in pl.groupby("seed"):
+        fz[int(seed)] = part.set_index(
+            ["gas_id", "target_batch", "model", "budget"])["frozen_nrmse"]
+    base = fz[PRIMARY_SEED]
+    worst = max((base - s.reindex(base.index)).abs().max()
+                for k, s in fz.items() if k != PRIMARY_SEED)
+    chk("G seed moves the held-out split", True, bool(worst > 1e-3))
+    chk("G max frozen nRMSE shift across draws", 0.050, round(float(worst), 3), 0.006)
+
+    # draws are mutually dependent
+    d5 = {}
+    for seed, part in pl[(pl.budget == 5) & pl.target_batch.isin(HELD)
+                         & np.isfinite(pl.d_ref)].groupby("seed"):
+        d5[int(seed)] = part.set_index(
+            ["gas_id", "target_batch", "model"]).sort_index()
+    b = d5[PRIMARY_SEED]
+    cors = [float(np.corrcoef(b.d_ref, d5[k].reindex(b.index).d_ref)[0, 1])
+            for k in d5 if k != PRIMARY_SEED]
+    chk("G draws dependent: min r(d_ref)", 0.80, round(min(cors), 2), 0.006)
+    chk("G draws dependent: max r(d_ref)", 0.95, round(max(cors), 2), 0.006)
+
 print(f"{'':4} {'check':44} detail")
 fails = 0
 for status, label, detail in checks:
