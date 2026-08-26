@@ -437,15 +437,21 @@ def table_4_hypotheses(report: dict) -> list[str]:
         f"fit plateau at $N={h3['light_plateau_budget']}$ | "
         f"**{report['verdicts']['H3']}** |",
         "",
-        f"H2 is technically supported but the margin over always-recalibrate is "
+        f"H2 is technically supported in this draw but the margin over "
+        f"always-recalibrate is "
         f"{(evaluation['always_recalibrate'] - evaluation['rule']):.7f} nRMSE, or "
         f"{100 * (evaluation['always_recalibrate'] - evaluation['rule']) / evaluation['always_recalibrate']:.3f} %, "
         f"and the rule recalibrates {evaluation['n_recalibrate']} of "
-        f"{evaluation['n_cells']} cells. It is always-recalibrate plus rounding. "
-        "The honest reading is that above the reference-count floor no gate is "
-        "needed. The pre-specified protocol anticipated this outcome and declared "
-        "it reportable.",
-        "",
+        f"{evaluation['n_cells']} cells. **Neither the H2 nor the H3 verdict "
+        "replicates across the ten panel draws of Table 5.** Recomputing both on the "
+        "dense grid, the rule beats always-recalibrate in 4 of 10 draws and is worse "
+        "in 4 (margin \u22121.223 % to +0.207 %), and H3 holds in 4 of 10, with no "
+        "decision-stable budget existing at all in 4. H3's decision budget is also "
+        "grid-dependent: 10 on the pre-specified four-point grid, 8 once the dense "
+        "grid supplies that value. The verdicts above are the registered outcomes of "
+        "the pre-specified draw; Section 4.7 reports the replication. The honest "
+        "reading is that above the exactly-determined panel no gate is needed, which "
+        "the protocol anticipated and declared reportable.",
         "Per-model H1 on held-out windows: "
         + ", ".join(
             f"{MODEL_LABEL[m]} $\\rho={fmt(v['rho'])}$ ($p={fmt_p(v['p'])}$)"

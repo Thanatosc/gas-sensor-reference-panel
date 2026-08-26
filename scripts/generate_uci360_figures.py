@@ -867,14 +867,19 @@ def caption_specs(summary: pd.DataFrame, diagnostic_stats: dict,
             ),
             "claim": (
                 "The diagnostic is informative about how much will be recovered above the "
-                "exactly-determined panel, but it does not order cells by safety there. The "
-                "reversal shown in (b) is specific to the one draw in five that realised an "
-                "inversion; in the other four the top diagnostic quartile at $N=2$ is no "
-                "worse than the rest."
+                "exactly-determined panel, but it does not order cells by safety there, and "
+                "most of the pooled coefficient is a contrast between analytes rather than an "
+                "ordering within one. The reversal shown in (b) is specific to the one draw in "
+                "ten that realised an inversion; in the other nine the top diagnostic quartile "
+                "at $N=2$ is no worse than the rest."
             ),
             "limitations": (
                 provenance + " " + shared_panel + " The rule-fitting association is reported "
-                "for completeness and is not independent evidence."
+                "for completeness and is not independent evidence. The pooled coefficient is "
+                "largely a between-analyte contrast: the three analytes are ordered in both "
+                "$D_{\\mathrm{ref}}$ and benefit, ranking within analyte first reduces the "
+                "held-out coefficient from 0.814 to 0.192, and NOx reverses sign between window "
+                "sets."
             ),
             "latex": r"\includegraphics[width=\textwidth]{figures/figure_04_diagnostic.pdf}",
         },
@@ -886,9 +891,11 @@ def caption_specs(summary: pd.DataFrame, diagnostic_stats: dict,
             "title": "The failure threshold does not replicate across panel draws",
             "caption": (
                 "Figure 5. The same protocol under "
-                f"{len(draw_stats['seeds'])} independent reference-panel draws, each "
-                "redrawing every panel and reseeding the model random states; the "
-                "pre-specified draw is highlighted. (a) Worst nRMSE ratio observed in "
+                f"{len(draw_stats['seeds'])} reference-panel draws, each redrawing every "
+                "panel, the held-out split and the model random states; the pre-specified "
+                "draw is highlighted. The draws share the corpus, the window boundaries and "
+                "the source period, so they are replicates of the sampling rather than "
+                "independent studies. (a) Worst nRMSE ratio observed in "
                 "each draw, logarithmic scale. Inversion and inflation beyond fivefold "
                 "occur at two references and at no other budget in any draw, and only "
                 "the pre-specified draw realises them; above two references the worst "

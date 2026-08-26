@@ -126,8 +126,17 @@ if TITLE_PAGE.exists():
 # ---------------------------------------------------------------- floats
 n_fig_cited = len(set(re.findall(r"Figure (\d)", body)))
 check(n_fig_cited >= 5, "all figures cited in text", f"{n_fig_cited} distinct")
-n_tab_cited = len(set(re.findall(r"Table (S?\d)", body)))
-check(n_tab_cited >= 6, "tables cited in text", f"{n_tab_cited} distinct")
+tab_cited = set(re.findall(r"Table[~ ](S?\d)", body))
+check(len(tab_cited) >= 6, "tables cited in text", f"{len(tab_cited)} distinct")
+# The guide requires every table to be cited, not merely that cited tables exist.
+if TABLES.exists():
+    tab_have = set(re.findall(r"^## Table (S?\d)", TABLES.read_text(encoding="utf-8"), re.M))
+    uncited_tabs = sorted(tab_have - tab_cited)
+    check(not uncited_tabs, "every table cited in text",
+          f"uncited {uncited_tabs}" if uncited_tabs else f"{len(tab_have)} tables")
+    absent = sorted(tab_cited - tab_have)
+    check(not absent, "every cited table exists",
+          f"missing {absent}" if absent else "")
 if TABLES.exists():
     tb = TABLES.read_text(encoding="utf-8")
     check("|:" not in tb and "\\hline" not in tb,
