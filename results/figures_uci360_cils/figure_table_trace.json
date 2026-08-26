@@ -35,7 +35,7 @@
     },
     "transformation": {
       "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_uci360_figures.py",
-      "sha256": "85e2ce59a59487b5299631cd937b19594afedb0d20f38e4dcafb1ca52a61ebdc"
+      "sha256": "dbb677cb694527c39aee5b023c67627a5a0cc860dab1ddbedb02792fb915e2d0"
     },
     "caption_claim": "The cost of a small reference panel appears in the mean but not the median, so it is a tail effect rather than a shift of the whole distribution.",
     "supported_manuscript_claims": [
@@ -45,7 +45,7 @@
       }
     ],
     "limitations": [
-      "Cells share source-model fits and target windows and are not independent replicates, so the spread is descriptive rather than a confidence statement. The same reference panel supplies both the diagnostic and the calibrator fit, so panel size and diagnostic quality are not independent."
+      "One panel draw, and the one whose tail was realised: the mean\u2013median gap here is ten times any other draw's. Cells share source-model fits and target windows and are not independent replicates, so the spread is descriptive rather than a confidence statement. The same reference panel supplies both the diagnostic and the calibrator fit, so panel size and diagnostic quality are not independent."
     ],
     "rendered_status": "PASS"
   },
@@ -85,7 +85,7 @@
     },
     "transformation": {
       "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_uci360_figures.py",
-      "sha256": "85e2ce59a59487b5299631cd937b19594afedb0d20f38e4dcafb1ca52a61ebdc"
+      "sha256": "dbb677cb694527c39aee5b023c67627a5a0cc860dab1ddbedb02792fb915e2d0"
     },
     "caption_claim": "In this panel draw the failures are isolated points rather than a shifted distribution, and the three most severe share one analyte-window and invert the calibration slope.",
     "supported_manuscript_claims": [
@@ -135,7 +135,7 @@
     },
     "transformation": {
       "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_uci360_figures.py",
-      "sha256": "85e2ce59a59487b5299631cd937b19594afedb0d20f38e4dcafb1ca52a61ebdc"
+      "sha256": "dbb677cb694527c39aee5b023c67627a5a0cc860dab1ddbedb02792fb915e2d0"
     },
     "caption_claim": "Slope inversion on a two-point least-squares fit is the mechanism behind the tail, and it disappears as soon as a third reference is added; the median slope then approaches unity monotonically.",
     "supported_manuscript_claims": [
@@ -145,7 +145,7 @@
       }
     ],
     "limitations": [
-      "The calibrator is fitted on the reference panel while this slope is evaluated on the held-out set, so the two are linked only through the panel draw. A single reference-panel seed is used. The standard deviation is not monotone in the budget, so it should not be read as a precision-improves-with-N statement on its own. A slope near 1 does not by itself imply small error, since it is insensitive to scatter about the calibration line."
+      "One panel draw, and the only one of ten with any inverted slope, so the inversion band should not be read as commonly occupied. The calibrator is fitted on the reference panel while this slope is evaluated on the held-out set, so the two are linked only through the panel draw. The standard deviation is not monotone in the budget, so it should not be read as a precision-improves-with-N statement on its own. A slope near 1 does not by itself imply small error, since it is insensitive to scatter about the calibration line."
     ],
     "rendered_status": "PASS"
   },
@@ -185,7 +185,7 @@
     },
     "transformation": {
       "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_uci360_figures.py",
-      "sha256": "85e2ce59a59487b5299631cd937b19594afedb0d20f38e4dcafb1ca52a61ebdc"
+      "sha256": "dbb677cb694527c39aee5b023c67627a5a0cc860dab1ddbedb02792fb915e2d0"
     },
     "caption_claim": "The diagnostic is informative about how much will be recovered above the exactly-determined panel, but it does not order cells by safety there, and most of the pooled coefficient is a contrast between analytes rather than an ordering within one. The reversal shown in (b) is specific to the one draw in ten that realised an inversion; in the other nine the top diagnostic quartile at $N=2$ is no worse than the rest.",
     "supported_manuscript_claims": [
@@ -235,7 +235,7 @@
     },
     "transformation": {
       "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_uci360_figures.py",
-      "sha256": "85e2ce59a59487b5299631cd937b19594afedb0d20f38e4dcafb1ca52a61ebdc"
+      "sha256": "dbb677cb694527c39aee5b023c67627a5a0cc860dab1ddbedb02792fb915e2d0"
     },
     "caption_claim": "Unbounded failure is confined to the exactly-determined panel in every draw, while the reference count at which moderate failures cease varies by a factor of five across draws, with a mode at four.",
     "supported_manuscript_claims": [

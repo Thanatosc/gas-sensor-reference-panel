@@ -399,6 +399,60 @@ if pooled is not None:
     chk("G draws dependent: min r(d_ref)", 0.80, round(min(cors), 2), 0.006)
     chk("G draws dependent: max r(d_ref)", 0.95, round(max(cors), 2), 0.006)
 
+# ---------------------------------------------------------------- H
+# How atypical the pre-specified draw is on each figure's own quantity. The
+# captions state these, so they are checked here.
+if pooled is not None:
+    pl = pooled
+    b2 = pl[pl.budget == 2]
+    g = b2.groupby("seed").ratio.agg(["mean", "median"])
+    gap = (g["mean"] - g["median"])
+    chk("H fig1 primary mean-median gap", 0.997, round(float(gap[PRIMARY_SEED]), 3))
+    others = gap.drop(PRIMARY_SEED)
+    chk("H fig1 next largest gap", 0.105, round(float(others.max()), 3))
+    chk("H fig1 smallest gap", -0.014, round(float(others.min()), 3))
+    chk("H fig1 primary gap is largest", True,
+        bool(gap[PRIMARY_SEED] > others.max()))
+
+    worst = pl.groupby("seed").ratio.max()
+    chk("H fig2 primary worst ratio", 44.5, round(float(worst[PRIMARY_SEED]), 1))
+    chk("H fig2 next worst ratio", 4.7,
+        round(float(worst.drop(PRIMARY_SEED).max()), 1))
+
+    # first-clean budget per draw, primary first then ascending seed
+    order = [PRIMARY_SEED] + sorted(s for s in pl.seed.unique() if s != PRIMARY_SEED)
+    budgets = sorted(pl.budget.unique())
+    firsts = []
+    for seed in order:
+        part = pl[pl.seed == seed]
+        for i, b in enumerate(budgets):
+            if b == 0:
+                continue
+            if all(int((part[part.budget == later].ratio > 2).sum()) == 0
+                   for later in budgets[i:]):
+                firsts.append(int(b))
+                break
+    chk("H fig2 first-clean sorted", [4, 4, 4, 4, 4, 5, 6, 8, 20, 20], sorted(firsts))
+    chk("H fig2 primary is the modal value", 4, firsts[0])
+
+    inv = b2.groupby("seed").slope.apply(lambda s: int((s < 0).sum()))
+    chk("H fig3 primary inverted count", 3, int(inv[PRIMARY_SEED]))
+    chk("H fig3 other draws inverted", 0, int(inv.drop(PRIMARY_SEED).sum()))
+    mins = b2.groupby("seed").slope.min().drop(PRIMARY_SEED)
+    chk("H fig3 other draws min slope low", 0.275, round(float(mins.min()), 3))
+    chk("H fig3 other draws min slope high", 0.408, round(float(mins.max()), 3))
+    chk("H fig3 other draws all positive", True, bool((mins > 0).all()))
+
+    # pooled counts quoted in 4.3 and Table 6
+    seq = [int((pl[pl.budget == b].ratio > 2).sum())
+           for b in (2, 3, 4, 5, 6, 8, 10)]
+    chk("H pooled >2x sequence", [48, 25, 10, 8, 5, 3, 3], seq)
+    chk("H pooled >3x persists to 8", True,
+        int((pl[pl.budget == 8].ratio > 3).sum()) > 0)
+    chk("H pooled worst above two", 4.68,
+        round(float(max(pl[pl.budget == b].ratio.max()
+                        for b in budgets if b > 2)), 2), 0.006)
+
 print(f"{'':4} {'check':44} detail")
 fails = 0
 for status, label, detail in checks:
