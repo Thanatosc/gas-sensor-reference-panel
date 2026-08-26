@@ -62,9 +62,19 @@ public.
 Version DOIs identify the exact state that produced the manuscript's numbers;
 concept DOIs always resolve to the latest version.
 
-`10.5281/zenodo.21973117` (v1.0.0) archives the **withdrawn** analysis, in which
-Wörner was treated as the primary corpus. It is retained as the record of that
-version and should not be used to reproduce the current manuscript.
+**The deposited v2.0.0 archive is not byte-identical to a build from the current
+tree, and is not meant to be.** It was built before this repository was pruned of
+material that does not reproduce the research. The differences are one status
+document and one submission tool present in the deposit, one audit script added
+here afterwards, and two files whose text changed (`README.md` and
+`build_zenodo_packages.py`). Nothing that reproduces a result differs: the
+benchmark, analysis, figure and table scripts, and `verify_draft_numbers.py`, are
+the same in both. A rebuild will therefore report a different SHA-256 from the
+deposit; that is expected and is not a fault to correct.
+
+`10.5281/zenodo.21973117` (v1.0.0) archives a different analysis of a related
+corpus, in which the two-level Wörner archive was the primary evidence. It is
+retained for provenance and does not reproduce the current manuscript.
 
 The ten row-level benchmark tables (one per panel draw, 1.10 MB each) are
 archived in the data record rather than here, following the convention that

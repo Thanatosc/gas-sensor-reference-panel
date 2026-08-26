@@ -33,6 +33,12 @@ GITHUB = f"https://github.com/Thanatosc/{REPO}"
 PAPER = ("The Exactly-Determined Reference Panel: Why Two-Sample "
          "Slope-and-Bias Recalibration Cannot Be Checked, and Why Larger "
          "Panels Are Not Reliably Safe Either")
+# v2.0.0 is already published at 10.5281/zenodo.22114413 and stays as deposited.
+# Rebuilding from the current tree yields a different SHA-256, because the
+# repository was pruned after that deposit: PROJECT_STATUS.md and deposit_zenodo.py
+# were in it, verify_cils_compliance.py was added later, and README.md and this file
+# have changed. No file that reproduces a result differs. Bump the version only if
+# something a result depends on changes; do not re-cut v2.0.0 to chase the hash.
 CODE_VERSION = "2.0.0"
 DATA_VERSION = "1.0.0"
 CODE_CONCEPT_DOI = "10.5281/zenodo.21973116"
@@ -47,13 +53,16 @@ AFFILIATION = "School of Computing and Artificial Intelligence, Southwest Jiaoto
 # Fixed timestamp so rebuilds are byte-identical (1980-01-01, the zip epoch).
 ZIP_DATE = (1980, 1, 1, 0, 0, 0)
 
-# Never released: material tied to the withdrawn Measurement submission, and the
-# manuscript-production tooling that is unusable without the manuscript itself.
-# Kept in step with .gitignore; both exclusions exist for the same reason.
+# Never released: material for a specific submission, and the tooling that is
+# unusable without the manuscript itself. Kept in step with .gitignore. Note that
+# this builder walks the working tree rather than the git index, so anything
+# gitignored must be listed here as well or it is silently archived.
 EXCLUDE_NAMES = (
     "measurement",
     "build_latex.py",
     "verify_latex_build.py",
+    "build_submission_docs.py",
+    "deposit_zenodo.py",
     "double_anonymized_repository_plan",
 )
 
