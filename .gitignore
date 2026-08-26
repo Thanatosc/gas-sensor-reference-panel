@@ -51,3 +51,7 @@ latex/*.blg
 latex/*.fls
 latex/*.fdb_latexmk
 latex/_preview/
+
+# Built release archives: regenerate with scripts/build_zenodo_packages.py
+release/
+release_check/
