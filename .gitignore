@@ -97,3 +97,6 @@ artifacts/EXPERIMENT_RESULT.md
 # them from manuscript/, which is itself excluded above.
 submission_cils/
 scripts/build_submission_docs.py
+# Instructions for editing the Zenodo records' metadata: administrative, not a
+# research record, so it stays out for the same reason the proposal did.
+artifacts/ZENODO_TITLE_UPDATE.md

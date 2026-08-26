@@ -51,7 +51,10 @@ check(not undefined, "abstract avoids undefined abbreviations",
 # ---------------------------------------------------------------- keywords
 kw_raw = t.split("**Keywords:**", 1)[1].split("\n\n", 1)[0]
 keywords = [k.strip() for k in kw_raw.replace("\n", " ").split(";") if k.strip()]
-check(1 <= len(keywords) <= 7, "keywords 1-7", f"{len(keywords)}")
+# The Guide says 1-7, but Editorial Manager's own field rejects a 7th with
+# "Only 6 keywords are allowed", so the submission system is the binding limit.
+check(1 <= len(keywords) <= 6, "keywords 1-6 (Editorial Manager limit)",
+      f"{len(keywords)}")
 bad_kw = [k for k in keywords if " and " in k or " of " in k]
 check(not bad_kw, "keywords avoid 'and'/'of'", f"{bad_kw}" if bad_kw else "")
 
