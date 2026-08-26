@@ -1,0 +1,4 @@
+analysis,budget,light_rows,drift_rows,light_drift_conditioned_recovery_ge_50,light_drift_conditioned_recovery_lt_20,heterogeneous_boundary,full_retrain_joint_hits
+six_day_primary,5,24,10,7,2,True,9
+three_day_windows,5,42,21,12,6,True,19
+alternative_reference_seed,5,24,11,9,1,True,6

@@ -1,0 +1,90 @@
+[
+  {
+    "artifact_id": "fig-1",
+    "source_data": {
+      "dataset_id": "worner_zenodo_15681119_confirmation",
+      "file": "results\\confirmation_worner_v1\\tables\\benchmark_results.csv"
+    },
+    "transformation": {
+      "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_confirmation_figures.py",
+      "sha256": "8d8e4d354b50a290cbbcd34e5f77edb528d9bfeb842a23b4c29f0de0ce1a61a1"
+    },
+    "caption_claim": "The protocol preserves temporal order and selects reference observations before evaluating the held-out target set.",
+    "supported_manuscript_claims": [
+      {
+        "claim": "The protocol preserves temporal order and selects reference observations before evaluating the held-out target set.",
+        "locator": "Results/Figures"
+      }
+    ],
+    "limitations": [
+      "The diagram describes the analysis protocol and does not establish a physical cause for temporal change."
+    ],
+    "rendered_status": "PASS"
+  },
+  {
+    "artifact_id": "fig-2",
+    "source_data": {
+      "dataset_id": "worner_zenodo_15681119_confirmation",
+      "file": "results\\confirmation_worner_v1\\tables\\benchmark_results.csv"
+    },
+    "transformation": {
+      "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_confirmation_figures.py",
+      "sha256": "8d8e4d354b50a290cbbcd34e5f77edb528d9bfeb842a23b4c29f0de0ce1a61a1"
+    },
+    "caption_claim": "Performance changes with reference budget are heterogeneous across analytes and model classes.",
+    "supported_manuscript_claims": [
+      {
+        "claim": "Performance changes with reference budget are heterogeneous across analytes and model classes.",
+        "locator": "Results/Figures"
+      }
+    ],
+    "limitations": [
+      "The interquartile ranges summarize four target windows in the six-day primary analysis and are not confidence intervals."
+    ],
+    "rendered_status": "PASS"
+  },
+  {
+    "artifact_id": "fig-3",
+    "source_data": {
+      "dataset_id": "worner_zenodo_15681119_confirmation",
+      "file": "results\\confirmation_worner_v1\\tables\\benchmark_results.csv"
+    },
+    "transformation": {
+      "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_confirmation_figures.py",
+      "sha256": "8d8e4d354b50a290cbbcd34e5f77edb528d9bfeb842a23b4c29f0de0ce1a61a1"
+    },
+    "caption_claim": "At the primary budget, lightweight output calibration contains both useful and inadequate target-window/model regimes.",
+    "supported_manuscript_claims": [
+      {
+        "claim": "At the primary budget, lightweight output calibration contains both useful and inadequate target-window/model regimes.",
+        "locator": "Results/Figures"
+      }
+    ],
+    "limitations": [
+      "Recovery categories use the pre-specified ratio but the plotted effect is absolute nRMSE change because the ratio is unstable for small oracle denominators."
+    ],
+    "rendered_status": "PASS"
+  },
+  {
+    "artifact_id": "fig-4",
+    "source_data": {
+      "dataset_id": "worner_zenodo_15681119_confirmation",
+      "file": "results\\confirmation_worner_v1\\tables\\benchmark_results.csv"
+    },
+    "transformation": {
+      "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_confirmation_figures.py",
+      "sha256": "8d8e4d354b50a290cbbcd34e5f77edb528d9bfeb842a23b4c29f0de0ce1a61a1"
+    },
+    "caption_claim": "The presence of a heterogeneous lightweight boundary is stable to temporal-window width and reference-panel seed, while counts and regime medians vary.",
+    "supported_manuscript_claims": [
+      {
+        "claim": "The presence of a heterogeneous lightweight boundary is stable to temporal-window width and reference-panel seed, while counts and regime medians vary.",
+        "locator": "Results/Figures"
+      }
+    ],
+    "limitations": [
+      "The sensitivity analyses are descriptive and use the same W\u00f6rner evidence family; they do not provide an independent external validation corpus."
+    ],
+    "rendered_status": "PASS"
+  }
+]

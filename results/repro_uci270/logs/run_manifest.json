@@ -1,0 +1,61 @@
+{
+  "status": "UNVERIFIED",
+  "command": "scripts\\run_benchmark.py --config configs\\kill_test.json --input data\\processed\\uci270_normalized.csv --out-dir results\\repro_uci270",
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "package_versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.0",
+    "xgboost": "3.4.0"
+  },
+  "config_hash": "c219416b3433898520698374427bd5e8895aea9b2a2e6d08c3ebe1f3116219aa",
+  "input": "data\\processed\\uci270_normalized.csv",
+  "input_sha256": "b4ebf1e782e8c7435ee5f0326a723f9c413db8d72e03e7cc239b332e49c74579",
+  "rows": 13910,
+  "result_rows": 216,
+  "skipped_sequences": [
+    {
+      "gas_id": 2,
+      "target_batch": 4,
+      "reason": "insufficient common target concentration levels",
+      "common_concentrations": [
+        100.0
+      ]
+    },
+    {
+      "gas_id": 3,
+      "target_batch": 4,
+      "reason": "insufficient common target concentration levels",
+      "common_concentrations": [
+        250.0
+      ]
+    },
+    {
+      "gas_id": 3,
+      "target_batch": 5,
+      "reason": "insufficient common target concentration levels",
+      "common_concentrations": [
+        250.0
+      ]
+    },
+    {
+      "gas_id": 5,
+      "target_batch": 4,
+      "reason": "insufficient common target concentration levels",
+      "common_concentrations": [
+        250.0
+      ]
+    },
+    {
+      "gas_id": 6,
+      "target_batch": 4,
+      "reason": "no target rows"
+    },
+    {
+      "gas_id": 6,
+      "target_batch": 5,
+      "reason": "no target rows"
+    }
+  ]
+}

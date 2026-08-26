@@ -1,0 +1,252 @@
+[
+  {
+    "artifact_id": "fig-1",
+    "file": "figure_01_budget_curves.pdf",
+    "source_data": {
+      "dataset_id": "uci360_air_quality_rewindowed_floor_grid",
+      "doi": "10.24432/C59K5F",
+      "file": "results\\sensitivity_uci360_floor_grid\\tables\\benchmark_results.csv",
+      "rows": 3600,
+      "decision_cells_per_budget": 90,
+      "budgets": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10,
+        20,
+        50
+      ],
+      "target_windows": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "transformation": {
+      "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_uci360_figures.py",
+      "sha256": "d43266332f6a1ae63cda4e95afdd8cf9587cb81b8aefd4d413436cf04658611d"
+    },
+    "caption_claim": "The cost of a small reference panel appears in the mean but not the median, so it is a tail effect rather than a shift of the whole distribution.",
+    "supported_manuscript_claims": [
+      {
+        "claim": "The cost of a small reference panel appears in the mean but not the median, so it is a tail effect rather than a shift of the whole distribution.",
+        "locator": "Results/Figures"
+      }
+    ],
+    "limitations": [
+      "Cells share source-model fits and target windows and are not independent replicates, so the spread is descriptive rather than a confidence statement. The same reference panel supplies both the diagnostic and the calibrator fit, so panel size and diagnostic quality are not independent."
+    ],
+    "rendered_status": "PASS"
+  },
+  {
+    "artifact_id": "fig-2",
+    "file": "figure_02_tail_decay.pdf",
+    "source_data": {
+      "dataset_id": "uci360_air_quality_rewindowed_floor_grid",
+      "doi": "10.24432/C59K5F",
+      "file": "results\\sensitivity_uci360_floor_grid\\tables\\benchmark_results.csv",
+      "rows": 3600,
+      "decision_cells_per_budget": 90,
+      "budgets": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10,
+        20,
+        50
+      ],
+      "target_windows": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "transformation": {
+      "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_uci360_figures.py",
+      "sha256": "d43266332f6a1ae63cda4e95afdd8cf9587cb81b8aefd4d413436cf04658611d"
+    },
+    "caption_claim": "In this panel draw the failures are isolated points rather than a shifted distribution, and the three most severe share one analyte-window and invert the calibration slope.",
+    "supported_manuscript_claims": [
+      {
+        "claim": "In this panel draw the failures are isolated points rather than a shifted distribution, and the three most severe share one analyte-window and invert the calibration slope.",
+        "locator": "Results/Figures"
+      }
+    ],
+    "limitations": [
+      "This is one panel draw. The budget at which the count reaches zero is NOT reproducible across draws (Figure 5: 4, 6, 4, 20, 20) and must not be read as a floor. The tail is also concentrated rather than uniform, falling chiefly in one NO$_2$ window, so the count is neither a rate estimate nor a threshold."
+    ],
+    "rendered_status": "PASS"
+  },
+  {
+    "artifact_id": "fig-3",
+    "file": "figure_03_slope_convergence.pdf",
+    "source_data": {
+      "dataset_id": "uci360_air_quality_rewindowed_floor_grid",
+      "doi": "10.24432/C59K5F",
+      "file": "results\\sensitivity_uci360_floor_grid\\tables\\benchmark_results.csv",
+      "rows": 3600,
+      "decision_cells_per_budget": 90,
+      "budgets": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10,
+        20,
+        50
+      ],
+      "target_windows": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "transformation": {
+      "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_uci360_figures.py",
+      "sha256": "d43266332f6a1ae63cda4e95afdd8cf9587cb81b8aefd4d413436cf04658611d"
+    },
+    "caption_claim": "Slope inversion on a two-point least-squares fit is the mechanism behind the tail, and it disappears as soon as a third reference is added; the median slope then approaches unity monotonically.",
+    "supported_manuscript_claims": [
+      {
+        "claim": "Slope inversion on a two-point least-squares fit is the mechanism behind the tail, and it disappears as soon as a third reference is added; the median slope then approaches unity monotonically.",
+        "locator": "Results/Figures"
+      }
+    ],
+    "limitations": [
+      "The calibrator is fitted on the reference panel while this slope is evaluated on the held-out set, so the two are linked only through the panel draw. A single reference-panel seed is used. The standard deviation is not monotone in the budget, so it should not be read as a precision-improves-with-N statement on its own. A slope near 1 does not by itself imply small error, since it is insensitive to scatter about the calibration line."
+    ],
+    "rendered_status": "PASS"
+  },
+  {
+    "artifact_id": "fig-4",
+    "file": "figure_04_diagnostic.pdf",
+    "source_data": {
+      "dataset_id": "uci360_air_quality_rewindowed_floor_grid",
+      "doi": "10.24432/C59K5F",
+      "file": "results\\sensitivity_uci360_floor_grid\\tables\\benchmark_results.csv",
+      "rows": 3600,
+      "decision_cells_per_budget": 90,
+      "budgets": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10,
+        20,
+        50
+      ],
+      "target_windows": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "transformation": {
+      "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_uci360_figures.py",
+      "sha256": "d43266332f6a1ae63cda4e95afdd8cf9587cb81b8aefd4d413436cf04658611d"
+    },
+    "caption_claim": "The diagnostic is informative about how much will be recovered above the exactly-determined panel, but it does not order cells by safety there. The reversal shown in (b) is specific to the one draw in five that realised an inversion; in the other four the top diagnostic quartile at $N=2$ is no worse than the rest.",
+    "supported_manuscript_claims": [
+      {
+        "claim": "The diagnostic is informative about how much will be recovered above the exactly-determined panel, but it does not order cells by safety there. The reversal shown in (b) is specific to the one draw in five that realised an inversion; in the other four the top diagnostic quartile at $N=2$ is no worse than the rest.",
+        "locator": "Results/Figures"
+      }
+    ],
+    "limitations": [
+      "The diagnostic hypothesis was generated by inspecting an earlier three-window run of this corpus, so windows 4\u20139 are in-sample for hypothesis generation and windows 10\u201313 (121 previously untouched days) are the confirmation set. The same reference panel supplies both the diagnostic and the calibrator fit, so panel size and diagnostic quality are not independent. The rule-fitting association is reported for completeness and is not independent evidence."
+    ],
+    "rendered_status": "PASS"
+  },
+  {
+    "artifact_id": "fig-5",
+    "file": "figure_05_draw_sensitivity.pdf",
+    "source_data": {
+      "dataset_id": "uci360_air_quality_rewindowed_floor_grid",
+      "doi": "10.24432/C59K5F",
+      "file": "results\\sensitivity_uci360_floor_grid\\tables\\benchmark_results.csv",
+      "rows": 3600,
+      "decision_cells_per_budget": 90,
+      "budgets": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10,
+        20,
+        50
+      ],
+      "target_windows": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "transformation": {
+      "script": "F:\\CS\\Paper\\v3\\c\\scripts\\generate_uci360_figures.py",
+      "sha256": "d43266332f6a1ae63cda4e95afdd8cf9587cb81b8aefd4d413436cf04658611d"
+    },
+    "caption_claim": "Unbounded failure is confined to the exactly-determined panel in every draw, while the reference count at which moderate failures cease varies by a factor of five across draws, with a mode at four.",
+    "supported_manuscript_claims": [
+      {
+        "claim": "Unbounded failure is confined to the exactly-determined panel in every draw, while the reference count at which moderate failures cease varies by a factor of five across draws, with a mode at four.",
+        "locator": "Results/Figures"
+      }
+    ],
+    "limitations": [
+      "Five draws demonstrate instability but do not characterise its distribution; the per-draw first-clean budgets span 4 to 20 and the one-in-five rate at which inversion appeared is an observation, not an estimate. Draws share the corpus, the windows and the source fits, so they are replicates of the panel selection only."
+    ],
+    "rendered_status": "PASS"
+  }
+]

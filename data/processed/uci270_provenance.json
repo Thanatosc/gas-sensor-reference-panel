@@ -1,0 +1,33 @@
+{
+  "dataset": "Gas Sensor Array Drift at Different Concentrations",
+  "uci_id": 270,
+  "doi": "10.24432/C5MK6M",
+  "evidence_family": "UCI 224/270",
+  "archive": "data\\raw\\gas_sensor_array_drift_concentration.zip",
+  "archive_sha256": "98fe3a30981a222dd4518fbcc3dddd45d5c0ce9b03ef6dc6fe5cf7a04cfbff5e",
+  "rows": 13910,
+  "batches": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "gas_labels": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "target_unit": "ppmv",
+  "timestamp_resolution": "batch ordinal only",
+  "location_id": "controlled_lab",
+  "warning": "No exact sample timestamps are available; do not claim within-batch temporal resolution."
+}

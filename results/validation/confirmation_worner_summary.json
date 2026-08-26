@@ -1,0 +1,207 @@
+{
+  "verification_status": "VERIFIED",
+  "protocol": "confirmation_worner_v1",
+  "primary_budget_rows": 5,
+  "lightweight_strategy": [
+    "calibrator_update"
+  ],
+  "thresholds": {
+    "drift_relative_increase": 0.2,
+    "recovery_support": 0.5,
+    "inadequate_recovery": 0.2
+  },
+  "rows": 576,
+  "lightweight_rows_at_primary_budget": 24,
+  "lightweight_supports_heterogeneous_boundary": true,
+  "full_retrain_joint_hits_at_primary_budget": 9,
+  "regime_summary": [
+    {
+      "gas_id": "Diacetyl",
+      "model": "pls",
+      "sequence_count": 4,
+      "drift_ge_20_count": 3,
+      "light_recovery_ge_50_count": 2,
+      "light_inadequate_lt_20_count": 2,
+      "drift_conditioned_recovery_ge_50_count": 2,
+      "drift_conditioned_inadequate_lt_20_count": 1,
+      "joint_light_hit_count": 2,
+      "median_recovered_loss": -0.3398306185058442,
+      "min_recovered_loss": -1.7004286799041526,
+      "max_recovered_loss": 1.0065103346812494,
+      "median_drift_increase": 1.1780703215437
+    },
+    {
+      "gas_id": "Diacetyl",
+      "model": "random_forest",
+      "sequence_count": 4,
+      "drift_ge_20_count": 2,
+      "light_recovery_ge_50_count": 2,
+      "light_inadequate_lt_20_count": 1,
+      "drift_conditioned_recovery_ge_50_count": 2,
+      "drift_conditioned_inadequate_lt_20_count": 0,
+      "joint_light_hit_count": 2,
+      "median_recovered_loss": 0.4667753999315817,
+      "min_recovered_loss": -0.0053464403623609,
+      "max_recovered_loss": 0.7910404663124389,
+      "median_drift_increase": 0.3285152305238421
+    },
+    {
+      "gas_id": "Diacetyl",
+      "model": "xgboost",
+      "sequence_count": 4,
+      "drift_ge_20_count": 2,
+      "light_recovery_ge_50_count": 1,
+      "light_inadequate_lt_20_count": 2,
+      "drift_conditioned_recovery_ge_50_count": 1,
+      "drift_conditioned_inadequate_lt_20_count": 1,
+      "joint_light_hit_count": 1,
+      "median_recovered_loss": -0.41540477186206476,
+      "min_recovered_loss": -1.0962331332229545,
+      "max_recovered_loss": 0.6108059920461062,
+      "median_drift_increase": -0.1258119267263339
+    },
+    {
+      "gas_id": "Phenylethanol",
+      "model": "pls",
+      "sequence_count": 4,
+      "drift_ge_20_count": 3,
+      "light_recovery_ge_50_count": 2,
+      "light_inadequate_lt_20_count": 1,
+      "drift_conditioned_recovery_ge_50_count": 2,
+      "drift_conditioned_inadequate_lt_20_count": 0,
+      "joint_light_hit_count": 2,
+      "median_recovered_loss": 0.7200515183907734,
+      "min_recovered_loss": -1.97565585381121,
+      "max_recovered_loss": 1.0089985467463998,
+      "median_drift_increase": 0.6572710059168831
+    },
+    {
+      "gas_id": "Phenylethanol",
+      "model": "random_forest",
+      "sequence_count": 4,
+      "drift_ge_20_count": 0,
+      "light_recovery_ge_50_count": 0,
+      "light_inadequate_lt_20_count": 3,
+      "drift_conditioned_recovery_ge_50_count": 0,
+      "drift_conditioned_inadequate_lt_20_count": 0,
+      "joint_light_hit_count": 0,
+      "median_recovered_loss": -1.8606674618614356,
+      "min_recovered_loss": -29.03177996329417,
+      "max_recovered_loss": 0.2816075508510464,
+      "median_drift_increase": -0.05580456104952635
+    },
+    {
+      "gas_id": "Phenylethanol",
+      "model": "xgboost",
+      "sequence_count": 4,
+      "drift_ge_20_count": 0,
+      "light_recovery_ge_50_count": 0,
+      "light_inadequate_lt_20_count": 3,
+      "drift_conditioned_recovery_ge_50_count": 0,
+      "drift_conditioned_inadequate_lt_20_count": 0,
+      "joint_light_hit_count": 0,
+      "median_recovered_loss": -0.4934374880352844,
+      "min_recovered_loss": -315.0253145304141,
+      "max_recovered_loss": 0.2443605181700119,
+      "median_drift_increase": -0.00026929022311315007
+    }
+  ],
+  "reproducibility": {
+    "status": "REPRODUCIBLE_WITH_FLOATING_POINT_VARIATION",
+    "primary_sha256": "389985ac20f403913893aa0bc4d2ff2a093edb53019881a212e045d6c2f66062",
+    "rerun_sha256": "941c1a64148647cd5e2eb8602f98fdd89efc9a0014dc6d838774573ee87d82da",
+    "max_absolute_numeric_difference": 3.694822225952521e-13,
+    "decision_flags_identical": true
+  },
+  "sensitivity": {
+    "three_day_windows": {
+      "lightweight_rows": 42,
+      "drift_ge_20_count": 21,
+      "drift_conditioned_recovery_ge_50_count": 12,
+      "drift_conditioned_inadequate_lt_20_count": 6,
+      "heterogeneous_boundary": true,
+      "full_retrain_joint_hits": 19,
+      "regime_medians": [
+        {
+          "gas_id": "Diacetyl",
+          "model": "pls",
+          "median_recovered_loss": 0.4561244504109727
+        },
+        {
+          "gas_id": "Diacetyl",
+          "model": "random_forest",
+          "median_recovered_loss": 0.7306880979043653
+        },
+        {
+          "gas_id": "Diacetyl",
+          "model": "xgboost",
+          "median_recovered_loss": -0.0330645812410428
+        },
+        {
+          "gas_id": "Phenylethanol",
+          "model": "pls",
+          "median_recovered_loss": 1.108212727848513
+        },
+        {
+          "gas_id": "Phenylethanol",
+          "model": "random_forest",
+          "median_recovered_loss": -0.2770048486436396
+        },
+        {
+          "gas_id": "Phenylethanol",
+          "model": "xgboost",
+          "median_recovered_loss": -0.28502456143505955
+        }
+      ]
+    },
+    "alternative_reference_seed": {
+      "lightweight_rows": 24,
+      "drift_ge_20_count": 11,
+      "drift_conditioned_recovery_ge_50_count": 9,
+      "drift_conditioned_inadequate_lt_20_count": 1,
+      "heterogeneous_boundary": true,
+      "full_retrain_joint_hits": 6,
+      "regime_medians": [
+        {
+          "gas_id": "Diacetyl",
+          "model": "pls",
+          "median_recovered_loss": 0.7293470671659987
+        },
+        {
+          "gas_id": "Diacetyl",
+          "model": "random_forest",
+          "median_recovered_loss": 0.5151729957619093
+        },
+        {
+          "gas_id": "Diacetyl",
+          "model": "xgboost",
+          "median_recovered_loss": 0.29174726845305265
+        },
+        {
+          "gas_id": "Phenylethanol",
+          "model": "pls",
+          "median_recovered_loss": 1.073117918366302
+        },
+        {
+          "gas_id": "Phenylethanol",
+          "model": "random_forest",
+          "median_recovered_loss": -0.1717975745595377
+        },
+        {
+          "gas_id": "Phenylethanol",
+          "model": "xgboost",
+          "median_recovered_loss": -0.14533871297506631
+        }
+      ]
+    },
+    "common_support_vs_observed_range": {
+      "status": "STRUCTURALLY_IDENTICAL",
+      "reason": "every eligible source and target window contains the same two concentration levels per analyte"
+    },
+    "missingness_policy": {
+      "status": "NOT_APPLICABLE",
+      "reason": "the 468-row normalized concentration panel contains no missing or non-finite features"
+    }
+  },
+  "interpretation": "descriptive temporal-shift evidence; not a causal estimate of physical sensor drift"
+}

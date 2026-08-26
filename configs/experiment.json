@@ -1,0 +1,27 @@
+{
+  "random_seed": 20260814,
+  "discovery_dataset": "UCI 270 (concentration extension of UCI 224)",
+  "evidence_family": "UCI 224/270",
+  "source_batches": [1, 2, 3],
+  "target_batches": [4, 5],
+  "target_holdout_fraction": 0.30,
+  "restrict_to_common_concentration_support": true,
+  "minimum_target_concentrations": 2,
+  "reference_budgets": [0.0, 0.01, 0.02, 0.05, 0.10, 0.20],
+  "group_columns": ["gas_id", "batch_id", "location_id"],
+  "holdout_target_bins": null,
+  "required_columns": ["timestamp", "batch_id", "location_id", "gas_id", "target"],
+  "metadata_columns": ["row_in_batch"],
+  "models": ["pls", "random_forest", "xgboost"],
+  "strategies": ["frozen", "full_retrain", "calibrator_update", "target_finetune"],
+  "lightweight_strategies": ["calibrator_update"],
+  "primary_metric": "recovered_loss",
+  "secondary_metrics": ["mae", "nrmse", "calibration_slope"],
+  "min_reference_rows": 2,
+  "bootstrap_replicates": 2000,
+  "kill_test": {
+    "frozen_nrmse_relative_increase": 0.20,
+    "minimum_recovered_loss_at_5_percent": 0.50,
+    "minimum_supporting_corpora": 2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "UNVERIFIED",
+  "command": "scripts\\run_benchmark.py --config configs\\kill_test_uci360.json --input data\\processed\\uci360_normalized.csv --out-dir results\\repro_uci360",
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "package_versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "scikit-learn": "1.9.0",
+    "xgboost": "3.4.0"
+  },
+  "config_hash": "cb9cd0a311e65513095d591a79d005006413ffe3909539df07d2b9762886da9e",
+  "input": "data\\processed\\uci360_normalized.csv",
+  "input_sha256": "1d8137fda9096a0126029edfe55b3628936015fc1b6ff618d7b8042b516b300b",
+  "rows": 14722,
+  "result_rows": 108,
+  "skipped_sequences": []
+}

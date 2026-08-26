@@ -1,0 +1,25 @@
+gas_id,target_batch,model,frozen_nrmse,oracle_nrmse,oracle_denominator,recovered_loss,denominator_rank_small_to_large,diagnostic_note
+Phenylethanol,7,xgboost,0.4596727214744179,0.4578638126483064,0.0018089088261115105,-315.0253145304141,1,Small denominator; ratio is unstable for interpretation; no row excluded
+Diacetyl,7,random_forest,0.0040824829046387,0.0020412414523193,0.0020412414523194,0.3615773941419132,2,Small denominator; ratio is unstable for interpretation; no row excluded
+Diacetyl,7,xgboost,0.0037930683983497,0.0009507391965738,0.0028423292017759,-1.0470520044762772,3,Small denominator; ratio is unstable for interpretation; no row excluded
+Phenylethanol,7,random_forest,0.4409317785478081,0.4239693385140015,0.01696244003380659,-29.03177996329417,4,Small denominator; ratio is unstable for interpretation; no row excluded
+Diacetyl,7,pls,0.1564506712852556,0.1279520086434406,0.028498662641814998,-1.2113263435989725,5,Small denominator; ratio is unstable for interpretation; no row excluded
+Phenylethanol,4,random_forest,0.500876315404645,0.4446229676178833,0.056253347786761665,-0.376402013342881,6,No small-denominator flag under descriptive 0.05 screen
+Diacetyl,6,pls,0.1960457660793254,0.1394241340719955,0.05662163200732989,-1.7004286799041526,7,No small-denominator flag under descriptive 0.05 screen
+Phenylethanol,4,xgboost,0.5048827219285782,0.438248851034462,0.06663387089411621,-0.1225525991352599,8,No small-denominator flag under descriptive 0.05 screen
+Diacetyl,6,xgboost,0.0734876586556955,0.0044438203072941,0.0690438383484014,0.2162424607521477,9,No small-denominator flag under descriptive 0.05 screen
+Diacetyl,6,random_forest,0.0920371301884917,0.0028867513459481,0.0891503788425436,-0.0053464403623609,10,No small-denominator flag under descriptive 0.05 screen
+Phenylethanol,6,random_forest,0.4783304297240559,0.3690274380042763,0.10930299171977964,-3.34493291037999,11,No small-denominator flag under descriptive 0.05 screen
+Phenylethanol,6,pls,0.5315646501968927,0.412105492608402,0.11945915758849068,-1.97565585381121,12,No small-denominator flag under descriptive 0.05 screen
+Diacetyl,5,random_forest,0.1723247902460164,0.0154110350074225,0.1569137552385939,0.5719734057212501,13,No small-denominator flag under descriptive 0.05 screen
+Phenylethanol,6,xgboost,0.501192514896824,0.343497064821729,0.15769545007509506,-0.864322376935309,14,No small-denominator flag under descriptive 0.05 screen
+Phenylethanol,7,pls,0.6487147487621924,0.4855422165707471,0.16317253219144529,0.9764502231811024,15,No small-denominator flag under descriptive 0.05 screen
+Phenylethanol,5,random_forest,0.5622240063651972,0.3967734450119698,0.1654505613532274,0.2816075508510464,16,No small-denominator flag under descriptive 0.05 screen
+Diacetyl,4,random_forest,0.1916485498684165,0.0207163381577602,0.1709322117106563,0.7910404663124389,17,No small-denominator flag under descriptive 0.05 screen
+Phenylethanol,5,xgboost,0.5585274608210483,0.380187029650419,0.1783404311706293,0.2443605181700119,18,No small-denominator flag under descriptive 0.05 screen
+Diacetyl,5,pls,0.4173821491689065,0.2089036328223059,0.20847851634660058,1.0065103346812494,19,No small-denominator flag under descriptive 0.05 screen
+Diacetyl,4,pls,0.4493146214849783,0.147830445471706,0.30148417601327226,0.5316651065872842,20,No small-denominator flag under descriptive 0.05 screen
+Phenylethanol,4,pls,0.8347588470328893,0.5180425326651026,0.3167163143677867,1.0089985467463998,21,No small-denominator flag under descriptive 0.05 screen
+Phenylethanol,5,pls,0.9122585646507092,0.5667207502613686,0.3455378143893406,0.4636528136004443,22,No small-denominator flag under descriptive 0.05 screen
+Diacetyl,5,xgboost,0.4357041542573548,0.0031953005645176,0.4325088536928372,-1.0962331332229545,23,No small-denominator flag under descriptive 0.05 screen
+Diacetyl,4,xgboost,0.5441228468257101,0.0001221691222162,0.5440006777034939,0.6108059920461062,24,No small-denominator flag under descriptive 0.05 screen

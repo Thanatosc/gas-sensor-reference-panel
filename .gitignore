@@ -1,0 +1,53 @@
+# --- environments and caches -------------------------------------------------
+.venv/
+.uv-cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# --- raw and derived data ----------------------------------------------------
+# Raw sources are not redistributed: UCI Air Quality is public (10.24432/C59K5F)
+# and the Wörner contrast archive is at 10.5281/zenodo.15681119. Provenance JSON
+# with checksums is kept under version control instead.
+data/raw/*
+data/external/*
+data/processed/*
+!data/raw/.gitkeep
+!data/external/.gitkeep
+!data/processed/.gitkeep
+!data/*/*provenance*.json
+
+# --- row-level benchmark results go to the Zenodo DATA record ----------------
+# Ten panel draws x 1.10 MB each. The derived summaries, decision cells, figures
+# and tables that the manuscript actually cites stay under version control; the
+# row-level tables are archived separately as a dataset (see README).
+results/seed_sensitivity/seed_*/tables/benchmark_results.csv
+results/seed_sensitivity/seed_*/logs/
+results/*/tables/benchmark_results.csv
+
+# --- stray caches and one-off submission material ---------------------------
+artifacts/tmp/
+submission_measurement/
+
+# Downloaded third-party papers: not ours to redistribute.
+artifacts/papers/
+
+# --- withdrawn-submission artefacts -----------------------------------------
+# The Measurement typeset draft (8.3 MB) and its reject letter are kept locally
+# as the record of the withdrawn submission but are not part of the code release.
+MEAS-*.pdf
+reject*
+claude --resume*
+The VLDB Journal
+When Do Zero-Shot*
+
+# --- LaTeX build intermediates ----------------------------------------------
+latex/*.aux
+latex/*.log
+latex/*.out
+latex/*.spl
+latex/*.bbl
+latex/*.blg
+latex/*.fls
+latex/*.fdb_latexmk
+latex/_preview/

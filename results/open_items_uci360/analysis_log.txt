@@ -1,0 +1,123 @@
+=== ITEM 1: all four strategies by budget (mean nRMSE) ===
+strategy  frozen  calibrator_update  target_finetune  full_retrain
+budget                                                            
+0        0.18414            0.18414          0.18414       0.18414
+2        0.18414            0.29585          0.45609       0.17326
+3        0.18414            0.15913          0.20231       0.17215
+4        0.18414            0.13608          0.17755       0.16756
+5        0.18414            0.12930          0.15960       0.16599
+6        0.18414            0.12218          0.14546       0.15999
+8        0.18414            0.11446          0.13161       0.15635
+10       0.18414            0.11223          0.12450       0.15325
+20       0.18414            0.10857          0.11431       0.14006
+50       0.18414            0.10563          0.10265       0.12257
+
+=== cells above 2x frozen, by strategy ===
+strategy  frozen  calibrator_update  target_finetune  full_retrain
+budget                                                            
+0              0                  0                0             0
+2              0                  8               35             0
+3              0                  4               25             0
+4              0                  0               12             0
+5              0                  0                7             0
+6              0                  0                5             0
+8              0                  0                0             0
+10             0                  0                0             0
+20             0                  0                0             0
+50             0                  0                0             0
+
+=== target_finetune detail ===
+ budget  n_cells  mean_nrmse  median_nrmse  mean_ratio  median_ratio  max_ratio  cells_gt2  cells_improved
+      0       90      0.1841        0.1327      1.0000        1.0000     1.0000          0               0
+      2       90      0.4561        0.2058      2.3289        1.6046    40.4821         35              26
+      3       90      0.2023        0.1821      1.4805        1.2980     4.7344         25              32
+      4       90      0.1776        0.1656      1.2873        1.1121     3.7368         12              37
+      5       90      0.1596        0.1534      1.1613        1.0622     3.3665          7              41
+      6       90      0.1455        0.1432      1.0400        0.9955     2.7557          5              46
+      8       90      0.1316        0.1259      0.9260        0.9362     1.9563          0              51
+     10       90      0.1245        0.1191      0.8796        0.9152     1.8227          0              55
+     20       90      0.1143        0.1144      0.8186        0.8773     1.5647          0              61
+     50       90      0.1027        0.1021      0.7370        0.8091     1.4166          0              70
+
+=== ITEM 3a: NO2 windows, target distribution ===
+gas_id  target_batch  n_rows  n_distinct_targets  target_min  target_max  target_range  target_mean  target_median  target_std  target_skew  target_iqr
+   NO2             4     652                 169       16.00      233.00        217.00       103.57         103.00       40.90         0.34       61.25
+   NO2             5     655                 160        5.00      206.00        201.00        98.65          97.00       38.38         0.25       55.00
+   NO2             6     362                 106        5.00      171.00        166.00        65.98          64.00       26.86         0.60       34.75
+   NO2             7     428                 166        2.00      225.00        223.00       108.46         107.00       46.57         0.16       65.75
+   NO2             8     479                 132       29.00      194.00        165.00        89.52          87.00       32.95         0.56       48.00
+   NO2             9     658                 208       13.00      288.00        275.00       126.02         121.00       52.58         0.34       75.00
+   NO2            10     478                 158       27.00      269.00        242.00       122.99         119.00       40.43         0.34       49.00
+   NO2            11     672                 200       17.00      333.00        316.00       137.93         136.00       49.34         0.27       60.00
+   NO2            12     615                 210       25.00      310.00        285.00       154.17         153.00       54.48         0.10       76.00
+   NO2            13     710                 191       29.00      248.00        219.00       132.30         130.00       45.65         0.23       65.75
+
+... refitting frozen models at N=2
+
+... refitting frozen models at N=3
+
+... refitting frozen models at N=4
+
+... refitting frozen models at N=5
+
+... refitting frozen models at N=6
+
+... refitting frozen models at N=8
+
+=== ITEM 3b: N=2 panel geometry, NO2 window 6 ===
+        model panel_targets panel_predictions  extreme_true_gap  extreme_pred_gap  extreme_gap_ratio  calibrator_slope   ratio
+          pls       27, 118  116.603, 112.334           91.0000           -4.2686            -0.0469          -21.3183 44.5289
+random_forest       27, 118  117.320, 107.660           91.0000           -9.6600            -0.1062           -9.4203 23.7690
+      xgboost       27, 118  122.641, 110.944           91.0000          -11.6973            -0.1285           -7.7796 19.8230
+
+=== N=2: does the sign of the predicted gap separate the failures? ===
+           count     min  median    max
+failed_2x                              
+False         82  0.1777  0.6843 1.1612
+True           8 -0.1285  0.5589 0.7087
+
+cells whose frozen model inverts the two references at N=2: 3
+gas_id  target_batch         model  extreme_gap_ratio  calibrator_slope   ratio
+   NO2             6           pls            -0.0469          -21.3183 44.5289
+   NO2             6 random_forest            -0.1062           -9.4203 23.7690
+   NO2             6       xgboost            -0.1285           -7.7796 19.8230
+  these are the 3 largest inflations: [44.5, 23.8, 19.8]
+
+=== the extreme pair is fixed by design; only interior points are added ===
+        extreme_true_gap  extreme_pred_gap
+budget                                    
+2                     28                90
+3                     28                90
+4                     28                90
+5                     28                90
+6                     28                90
+8                     28                90
+  (identical counts across budgets confirm the nested panel draws the
+   range extremes first, so the pathological pair is never displaced)
+
+=== residual degrees of freedom and panel falsifiability ===
+        residual_df  median_rank_agreement  min_rank_agreement  median_panel_residual  cells_gt2
+budget                                                                                          
+2                 0                 1.0000              0.0000                 0.0000          8
+3                 1                 1.0000              0.3333                 4.5468          4
+4                 2                 1.0000              0.5000                11.3457          0
+5                 3                 0.9000              0.5000                14.2021          0
+6                 4                 0.9333              0.6000                15.8858          0
+8                 6                 0.9286              0.6786                18.0140          0
+  residual_df = 0 at N=2: the two-point calibrator reproduces both
+  references exactly, so nothing in the panel can reveal the failure.
+
+=== do the surviving N=3 failures show a bad panel? ===
+            n  median_rank_agreement  median_pearson  median_residual
+failed_2x                                                            
+False      86                 1.0000          0.9984           4.0507
+True        4                 1.0000          0.9920          13.4364
+
+  N=3 cells above 2x:
+gas_id  target_batch         model panel_targets  panel_rank_agreement  panel_pearson_r  calibrator_slope  ratio
+    CO            13       xgboost 0.5, 0.7, 4.9                1.0000           0.9990            1.7671 2.0526
+   NOx             4 random_forest   30, 40, 261                1.0000           0.9916            1.5571 2.1650
+   NOx             4       xgboost   30, 40, 261                1.0000           0.9925            1.4804 2.0393
+   NOx             5           pls   14, 47, 275                1.0000           0.9808            1.9359 2.0974
+
+wrote strategy_comparison.csv, window_descriptives.csv, panel_conditioning.csv to results\open_items_uci360

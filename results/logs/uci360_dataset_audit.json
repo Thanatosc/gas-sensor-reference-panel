@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "input": "data\\processed\\uci360_normalized.csv",
+  "rows": 14722,
+  "columns": 11,
+  "feature_columns": [
+    "sensor_feature_001",
+    "sensor_feature_002",
+    "sensor_feature_003",
+    "sensor_feature_004",
+    "sensor_feature_005"
+  ],
+  "feature_count": 5,
+  "batch_count": 3,
+  "location_count": 1,
+  "gas_count": 3,
+  "timestamp_min": "2004-03-10 18:00:00+00:00",
+  "timestamp_max": "2004-12-05 17:00:00+00:00",
+  "temporal_group_columns": [
+    "gas_id",
+    "batch_id",
+    "location_id"
+  ],
+  "issues": []
+}

@@ -1,0 +1,86 @@
+  seed 11: reusing existing results\seed_sensitivity\seed_11\tables\benchmark_results.csv
+  seed 22: reusing existing results\seed_sensitivity\seed_22\tables\benchmark_results.csv
+  seed 33: reusing existing results\seed_sensitivity\seed_33\tables\benchmark_results.csv
+  seed 44: reusing existing results\seed_sensitivity\seed_44\tables\benchmark_results.csv
+  seed 55: running benchmark ...
+  seed 55: 3600 rows, 0 skipped
+  seed 66: running benchmark ...
+  seed 66: 3600 rows, 0 skipped
+  seed 77: running benchmark ...
+  seed 77: 3600 rows, 0 skipped
+  seed 88: running benchmark ...
+  seed 88: 3600 rows, 0 skipped
+  seed 99: running benchmark ...
+  seed 99: 3600 rows, 0 skipped
+
+=== cells above 2x frozen error, by seed and budget ===
+budget    0   2   3   4   5   6   8   10  20  50
+seed                                            
+11         0   2   2   1   1   0   0   0   0   0
+22         0   1   1   0   0   0   0   0   0   0
+33         0   6   3   3   2   1   1   1   0   0
+44         0   7   5   4   4   3   2   2   0   0
+55         0   3   2   0   0   0   0   0   0   0
+66         0   7   4   0   0   0   0   0   0   0
+77         0   2   2   1   0   0   0   0   0   0
+88         0   6   1   1   1   1   0   0   0   0
+99         0   6   1   0   0   0   0   0   0   0
+20260826   0   8   4   0   0   0   0   0   0   0
+
+=== inverted slopes, by seed and budget ===
+budget    0   2   3   4   5   6   8   10  20  50
+seed                                            
+11         0   0   0   0   0   0   0   0   0   0
+22         0   0   0   0   0   0   0   0   0   0
+33         0   0   0   0   0   0   0   0   0   0
+44         0   0   0   0   0   0   0   0   0   0
+55         0   0   0   0   0   0   0   0   0   0
+66         0   0   0   0   0   0   0   0   0   0
+77         0   0   0   0   0   0   0   0   0   0
+88         0   0   0   0   0   0   0   0   0   0
+99         0   0   0   0   0   0   0   0   0   0
+20260826   0   3   0   0   0   0   0   0   0   0
+
+=== worst ratio, by seed and budget ===
+budget     0     2    3    4    5    6    8    10   20   50
+seed                                                       
+11       1.00  2.49 2.38 2.02 2.01 1.73 1.58 1.22 1.09 1.03
+22       1.00  2.25 2.27 1.84 1.85 1.42 1.38 1.28 1.14 1.12
+33       1.00  3.34 3.42 2.47 2.47 2.40 2.22 2.21 1.32 1.13
+44       1.00  4.62 4.68 4.54 4.60 3.53 3.13 2.63 1.35 1.19
+55       1.00  2.31 2.45 1.65 1.64 1.37 1.28 1.26 1.17 1.09
+66       1.00  2.60 2.19 1.98 1.98 1.77 1.67 1.66 1.36 1.23
+77       1.00  3.35 3.30 2.06 1.91 1.94 1.45 1.46 1.10 1.04
+88       1.00  2.90 2.32 2.44 2.55 2.17 1.64 1.33 1.23 1.05
+99       1.00  2.85 2.63 1.85 1.77 1.81 1.49 1.30 1.53 1.08
+20260826 1.00 44.53 2.16 1.96 1.96 1.88 1.38 1.30 1.64 1.16
+
+=== floor per seed (smallest N with no failures at or above it) ===
+  seed        11: floor N = 6
+  seed        22: floor N = 4
+  seed        33: floor N = 20
+  seed        44: floor N = 20
+  seed        55: floor N = 4
+  seed        66: floor N = 4
+  seed        77: floor N = 5
+  seed        88: floor N = 8
+  seed        99: floor N = 4
+  seed  20260826: floor N = 4
+
+=== mean / median ratio at N=2 and N=4, by seed ===
+         mean_ratio             median_ratio            
+budget            2     3     4            2     3     4
+seed                                                    
+11            1.009 0.953 0.907        1.022 0.961 0.930
+22            1.056 0.998 0.875        1.028 0.968 0.922
+33            1.084 1.025 0.949        0.979 0.934 0.950
+44            1.119 1.078 0.959        1.055 1.025 0.957
+55            0.979 0.928 0.844        0.964 0.957 0.885
+66            1.149 1.058 0.892        1.094 1.025 0.908
+77            1.083 1.039 0.913        1.037 0.996 0.941
+88            1.076 0.972 0.900        1.000 0.982 0.931
+99            1.126 1.033 0.930        1.053 1.010 0.984
+20260826      2.005 1.035 0.906        1.009 0.992 0.899
+
+floors: {11: 6, 22: 4, 33: 20, 44: 20, 55: 4, 66: 4, 77: 5, 88: 8, 99: 4, 20260826: 4}
+all seeds agree: False

@@ -1,0 +1,62 @@
+{
+  "dataset": "Air Quality",
+  "uci_id": 360,
+  "doi": "10.24432/C59K5F",
+  "evidence_family": "UCI 360",
+  "input": "data\\raw\\air_quality_features.csv",
+  "input_sha256": "d8196847f231fc141ba16c1376aeb90d747a95353203e20ca3b4ae135438157d",
+  "window_definition": "three consecutive 90-day windows from the first timestamp",
+  "date_parse": "ucimlrepo CSV parsed as month/day/year; variable-width fields allowed",
+  "windows": {
+    "1": {
+      "min": "2004-03-10 18:00:00",
+      "max": "2004-06-08 17:00:00"
+    },
+    "2": {
+      "min": "2004-06-08 18:00:00",
+      "max": "2004-09-06 17:00:00"
+    },
+    "3": {
+      "min": "2004-09-06 18:00:00",
+      "max": "2004-12-05 17:00:00"
+    }
+  },
+  "targets": {
+    "CO": {
+      "unit": "mg/m3",
+      "rows": 4883,
+      "rows_by_window": {
+        "1": 1670,
+        "2": 1581,
+        "3": 1632
+      }
+    },
+    "NOx": {
+      "unit": "ppb",
+      "rows": 4921,
+      "rows_by_window": {
+        "1": 1684,
+        "2": 1672,
+        "3": 1565
+      }
+    },
+    "NO2": {
+      "unit": "ug/m3",
+      "rows": 4918,
+      "rows_by_window": {
+        "1": 1684,
+        "2": 1669,
+        "3": 1565
+      }
+    }
+  },
+  "features": [
+    "PT08.S1(CO)",
+    "PT08.S2(NMHC)",
+    "PT08.S3(NOx)",
+    "PT08.S4(NO2)",
+    "PT08.S5(O3)"
+  ],
+  "missing_value_policy": "replace -200 with missing and use complete cases per target",
+  "excluded_target": "NMHC(GT), because 8443/9357 rows use the -200 missing sentinel"
+}

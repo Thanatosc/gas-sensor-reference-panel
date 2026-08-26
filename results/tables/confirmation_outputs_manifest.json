@@ -1,0 +1,45 @@
+{
+  "source": "results\\confirmation_worner_v1\\tables\\benchmark_results.csv",
+  "primary_budget": 5,
+  "primary_summary_rows": 18,
+  "decision_rows": 24,
+  "sensitivity": [
+    {
+      "analysis": "six_day_primary",
+      "budget": 5,
+      "light_rows": 24,
+      "drift_rows": 10,
+      "light_drift_conditioned_recovery_ge_50": 7,
+      "light_drift_conditioned_recovery_lt_20": 2,
+      "heterogeneous_boundary": true,
+      "full_retrain_joint_hits": 9
+    },
+    {
+      "analysis": "three_day_windows",
+      "budget": 5,
+      "light_rows": 42,
+      "drift_rows": 21,
+      "light_drift_conditioned_recovery_ge_50": 12,
+      "light_drift_conditioned_recovery_lt_20": 6,
+      "heterogeneous_boundary": true,
+      "full_retrain_joint_hits": 19
+    },
+    {
+      "analysis": "alternative_reference_seed",
+      "budget": 5,
+      "light_rows": 24,
+      "drift_rows": 11,
+      "light_drift_conditioned_recovery_ge_50": 9,
+      "light_drift_conditioned_recovery_lt_20": 1,
+      "heterogeneous_boundary": true,
+      "full_retrain_joint_hits": 6
+    }
+  ],
+  "files": [
+    "results\\tables\\confirmation_budget_summary.csv",
+    "results\\tables\\confirmation_denominator_diagnostics.csv",
+    "results\\tables\\confirmation_primary_decision_matrix.csv",
+    "results\\tables\\confirmation_primary_regime_summary.csv",
+    "results\\tables\\confirmation_sensitivity_summary.csv"
+  ]
+}

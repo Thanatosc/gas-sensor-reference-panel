@@ -1,0 +1,108 @@
+{
+  "verification_status": "VERIFIED",
+  "reproducibility_verdict": "REPRODUCIBLE",
+  "kill_test_verdict": "FAIL",
+  "rationale": "The two evidence families do not provide the pre-specified same-direction joint effect.",
+  "corpora": [
+    {
+      "corpus": "UCI 270",
+      "models": [
+        {
+          "model": "pls",
+          "sequence_count": 6,
+          "drift_ge_20_count": 3,
+          "light_recovery_ge_50_count": 0,
+          "light_joint_hit_count": 0,
+          "light_median_recovered_loss": -0.6661775355140251,
+          "light_median_bootstrap_ci": [
+            -23.673434236262413,
+            0.2750747941014216
+          ],
+          "full_retrain_joint_hit_count": 2,
+          "full_retrain_median_recovered_loss": 0.2794956060377593
+        },
+        {
+          "model": "random_forest",
+          "sequence_count": 6,
+          "drift_ge_20_count": 2,
+          "light_recovery_ge_50_count": 1,
+          "light_joint_hit_count": 0,
+          "light_median_recovered_loss": -0.738628886510194,
+          "light_median_bootstrap_ci": [
+            -2.916046139792325,
+            0.24671412516925545
+          ],
+          "full_retrain_joint_hit_count": 1,
+          "full_retrain_median_recovered_loss": 0.5838047437993383
+        },
+        {
+          "model": "xgboost",
+          "sequence_count": 6,
+          "drift_ge_20_count": 2,
+          "light_recovery_ge_50_count": 3,
+          "light_joint_hit_count": 0,
+          "light_median_recovered_loss": 0.16663830807033161,
+          "light_median_bootstrap_ci": [
+            -382.4242076192951,
+            1.6037534660171158
+          ],
+          "full_retrain_joint_hit_count": 1,
+          "full_retrain_median_recovered_loss": 0.4957931816437767
+        }
+      ],
+      "corpus_hit": false,
+      "positive_direction_under_drift": false,
+      "undefined_recovery_rows": 1
+    },
+    {
+      "corpus": "UCI 360",
+      "models": [
+        {
+          "model": "pls",
+          "sequence_count": 3,
+          "drift_ge_20_count": 2,
+          "light_recovery_ge_50_count": 3,
+          "light_joint_hit_count": 2,
+          "light_median_recovered_loss": 1.214780644543426,
+          "light_median_bootstrap_ci": [
+            1.1094724773003113,
+            2.161917337171331
+          ],
+          "full_retrain_joint_hit_count": 0,
+          "full_retrain_median_recovered_loss": 0.2113969140421091
+        },
+        {
+          "model": "random_forest",
+          "sequence_count": 3,
+          "drift_ge_20_count": 3,
+          "light_recovery_ge_50_count": 1,
+          "light_joint_hit_count": 1,
+          "light_median_recovered_loss": 0.3740929035178839,
+          "light_median_bootstrap_ci": [
+            0.0157258228482912,
+            0.9131898765149176
+          ],
+          "full_retrain_joint_hit_count": 0,
+          "full_retrain_median_recovered_loss": 0.3338340024750514
+        },
+        {
+          "model": "xgboost",
+          "sequence_count": 3,
+          "drift_ge_20_count": 3,
+          "light_recovery_ge_50_count": 1,
+          "light_joint_hit_count": 1,
+          "light_median_recovered_loss": 0.1807312177088968,
+          "light_median_bootstrap_ci": [
+            0.0253548491908431,
+            0.8688989202774672
+          ],
+          "full_retrain_joint_hit_count": 1,
+          "full_retrain_median_recovered_loss": 0.4626406570074052
+        }
+      ],
+      "corpus_hit": true,
+      "positive_direction_under_drift": true,
+      "undefined_recovery_rows": 0
+    }
+  ]
+}

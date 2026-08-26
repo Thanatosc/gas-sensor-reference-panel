@@ -1,0 +1,55 @@
+  seed 11: running benchmark ...
+  seed 11: 3600 rows, 0 skipped
+  seed 22: running benchmark ...
+  seed 22: 3600 rows, 0 skipped
+  seed 33: running benchmark ...
+  seed 33: 3600 rows, 0 skipped
+  seed 44: running benchmark ...
+  seed 44: 3600 rows, 0 skipped
+
+=== cells above 2x frozen error, by seed and budget ===
+budget    0   2   3   4   5   6   8   10  20  50
+seed                                            
+11         0   2   2   1   1   0   0   0   0   0
+22         0   1   1   0   0   0   0   0   0   0
+33         0   6   3   3   2   1   1   1   0   0
+44         0   7   5   4   4   3   2   2   0   0
+20260826   0   8   4   0   0   0   0   0   0   0
+
+=== inverted slopes, by seed and budget ===
+budget    0   2   3   4   5   6   8   10  20  50
+seed                                            
+11         0   0   0   0   0   0   0   0   0   0
+22         0   0   0   0   0   0   0   0   0   0
+33         0   0   0   0   0   0   0   0   0   0
+44         0   0   0   0   0   0   0   0   0   0
+20260826   0   3   0   0   0   0   0   0   0   0
+
+=== worst ratio, by seed and budget ===
+budget     0     2    3    4    5    6    8    10   20   50
+seed                                                       
+11       1.00  2.49 2.38 2.02 2.01 1.73 1.58 1.22 1.09 1.03
+22       1.00  2.25 2.27 1.84 1.85 1.42 1.38 1.28 1.14 1.12
+33       1.00  3.34 3.42 2.47 2.47 2.40 2.22 2.21 1.32 1.13
+44       1.00  4.62 4.68 4.54 4.60 3.53 3.13 2.63 1.35 1.19
+20260826 1.00 44.53 2.16 1.96 1.96 1.88 1.38 1.30 1.64 1.16
+
+=== floor per seed (smallest N with no failures at or above it) ===
+  seed        11: floor N = 6
+  seed        22: floor N = 4
+  seed        33: floor N = 20
+  seed        44: floor N = 20
+  seed  20260826: floor N = 4
+
+=== mean / median ratio at N=2 and N=4, by seed ===
+         mean_ratio             median_ratio            
+budget            2     3     4            2     3     4
+seed                                                    
+11            1.009 0.953 0.907        1.022 0.961 0.930
+22            1.056 0.998 0.875        1.028 0.968 0.922
+33            1.084 1.025 0.949        0.979 0.934 0.950
+44            1.119 1.078 0.959        1.055 1.025 0.957
+20260826      2.005 1.035 0.906        1.009 0.992 0.899
+
+floors: {11: 6, 22: 4, 33: 20, 44: 20, 20260826: 4}
+all seeds agree: False

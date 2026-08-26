@@ -1,0 +1,5 @@
+A leakage-controlled protocol evaluates recalibration under temporal shift.
+Absolute reference budgets expose when lightweight calibration is insufficient.
+Five references yielded both strong recovery and marked error worsening.
+Full retraining was more reliable, but not uniformly beneficial.
+Absolute nRMSE and denominator diagnostics prevent misleading recovery claims.
