@@ -150,7 +150,7 @@ below).
 ## Verification
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\verify_draft_numbers.py   # 141 numeric claims
+.\.venv\Scripts\python.exe scripts\verify_draft_numbers.py   # 194 numeric claims
 ```
 
 Every quantitative claim in the manuscript is restated here as a literal and

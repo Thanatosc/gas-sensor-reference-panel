@@ -453,6 +453,25 @@ if pooled is not None:
         round(float(max(pl[pl.budget == b].ratio.max()
                         for b in budgets if b > 2)), 2), 0.006)
 
+# ---------------------------------------------------------------- I
+# Section 5.2 claims the two-point identity b = (y2-y1)/(yhat2-yhat1) reproduces
+# in the fitted coefficients to within 7.1e-15. The identity itself is algebra and
+# needs no check; what is empirical, and therefore checked here, is that it governs
+# the coefficients this pipeline actually fitted and that no N=2 cell reached them
+# by some other branch.
+COND = Path("results/open_items_uci360/panel_conditioning.csv")
+if COND.exists():
+    pc = pd.read_csv(COND)
+    ex = pc[pc.n_reference == 2].copy()
+    chk("I N=2 cells in conditioning table", 90, len(ex))
+    dev = (ex.extreme_true_gap / ex.extreme_pred_gap - ex.calibrator_slope).abs()
+    chk("I two-point identity max deviation", 7.1e-15, float(dev.max()), 0.05e-15)
+    chk("I identity holds to machine precision", True,
+        bool(float((dev / ex.calibrator_slope.abs()).max()) < 1e-14))
+    # no N=2 cell took the intercept-only fallback branch of fit_strategy
+    chk("I all N=2 cells are genuine two-point fits", True,
+        bool((ex.residual_df == 0).all() and (ex.calibrator_slope != 1.0).all()))
+
 print(f"{'':4} {'check':44} detail")
 fails = 0
 for status, label, detail in checks:

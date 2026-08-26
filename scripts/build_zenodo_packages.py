@@ -204,13 +204,13 @@ included as artifacts/UCI360_DRAW_SENSITIVITY.md.</p>
 <p>Contents: the frozen protocol, run configurations, split/recalibration/metric
 implementation, benchmark and analysis runners, the ten-draw replication driver,
 derived summaries and decision cells, and five vector figures. An audit script is
-included that restates 141 quantitative claims from the manuscript as literals and
+included that restates 194 quantitative claims from the manuscript as literals and
 recomputes each from the frozen result files, exiting non-zero on any mismatch.</p>
 
-<p>The manuscript itself is not included. Under double-anonymised review,
-reviewer-visible material must not be linkable to author identity; the tables and
-figures the manuscript cites are regenerable from the code and results deposited
-here, and this matches v1.0.0, which also contained no manuscript.</p>
+<p>The manuscript itself is not included: this repository carries code, raw results,
+protocols and dataset manifests, and the tables and figures the manuscript cites are
+regenerable from the code and results deposited here. This matches v1.0.0, which also
+contained no manuscript.</p>
 
 <p>Row-level benchmark tables for the ten panel draws are archived separately as a
 dataset record, following the convention that large numerical arrays are deposited
