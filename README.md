@@ -57,7 +57,7 @@ public.
 | Record | Version DOI | Concept DOI |
 |---|---|---|
 | Code and derived results, v2.0.0 | [10.5281/zenodo.22114413](https://doi.org/10.5281/zenodo.22114413) | [10.5281/zenodo.21973116](https://doi.org/10.5281/zenodo.21973116) |
-| Row-level benchmark data, v1.0.0 | [10.5281/zenodo.22114399](https://doi.org/10.5281/zenodo.22114399) | assigned on publication |
+| Row-level benchmark data, v1.0.0 | [10.5281/zenodo.22114399](https://doi.org/10.5281/zenodo.22114399) | [10.5281/zenodo.22114398](https://doi.org/10.5281/zenodo.22114398) |
 
 Version DOIs identify the exact state that produced the manuscript's numbers;
 concept DOIs always resolve to the latest version.
