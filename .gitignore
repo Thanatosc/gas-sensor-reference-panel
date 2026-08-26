@@ -91,3 +91,9 @@ artifacts/PIVOT_DECISION.md
 artifacts/PROJECT_STATUS.md
 artifacts/EXPERIMENT_RESULT.md
 候选一：气体传感器漂移下的再校准策略评测.md
+
+# --- submission materials ----------------------------------------------------
+# One-off files for a specific journal submission, and the script that builds
+# them from manuscript/, which is itself excluded above.
+submission_cils/
+scripts/build_submission_docs.py
