@@ -28,10 +28,17 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+REPO = "gas-sensor-reference-panel"
+GITHUB = f"https://github.com/Thanatosc/{REPO}"
+PAPER = ("The Exactly-Determined Reference Panel: Why Two-Sample "
+         "Slope-and-Bias Recalibration Cannot Be Checked, and Why Larger "
+         "Panels Are Not Reliably Safe Either")
 CODE_VERSION = "2.0.0"
 DATA_VERSION = "1.0.0"
 CODE_CONCEPT_DOI = "10.5281/zenodo.21973116"
 CODE_V1_DOI = "10.5281/zenodo.21973117"
+# Reserved when the data draft was created; see release/zenodo_deposit_state.json
+DATA_V1_DOI = "10.5281/zenodo.22114399"
 UCI_DOI = "10.24432/C59K5F"
 WORNER_DOI = "10.5281/zenodo.15681119"
 ORCID = "0009-0003-3716-0008"
@@ -252,21 +259,24 @@ KEYWORDS = [
 def code_metadata() -> dict:
     return {
         "metadata": {
-            "title": ("Reference-set size for slope-and-bias recalibration of a "
-                      "drifting gas-sensor array: analysis code and derived results"),
+            "title": (f"{REPO}: analysis code and derived results for "
+                      f"\u201c{PAPER}\u201d"),
             "upload_type": "software",
             "description": CODE_DESCRIPTION,
             "creators": [{"name": "Cai, Siyu", "affiliation": AFFILIATION,
                           "orcid": ORCID}],
             "keywords": KEYWORDS,
             "access_right": "open",
-            "license": "other-open",
+            "license": "mit-license",
             "language": "eng",
             "version": CODE_VERSION,
             "related_identifiers": [
+                {"identifier": GITHUB, "relation": "isSupplementTo"},
                 {"identifier": CODE_V1_DOI, "relation": "isNewVersionOf",
                  "resource_type": "software"},
                 {"identifier": UCI_DOI, "relation": "isSupplementTo",
+                 "resource_type": "dataset"},
+                {"identifier": DATA_V1_DOI, "relation": "isSupplementedBy",
                  "resource_type": "dataset"},
                 {"identifier": WORNER_DOI, "relation": "references",
                  "resource_type": "dataset"},
@@ -284,8 +294,8 @@ def code_metadata() -> dict:
 def data_metadata() -> dict:
     return {
         "metadata": {
-            "title": ("Row-level benchmark results for slope-and-bias recalibration "
-                      "of a drifting gas-sensor array under ten reference-panel draws"),
+            "title": (f"{REPO}: row-level benchmark results under ten "
+                      f"reference-panel draws for \u201c{PAPER}\u201d"),
             "upload_type": "dataset",
             "description": DATA_DESCRIPTION,
             "creators": [{"name": "Cai, Siyu", "affiliation": AFFILIATION,
@@ -296,6 +306,7 @@ def data_metadata() -> dict:
             "language": "eng",
             "version": DATA_VERSION,
             "related_identifiers": [
+                {"identifier": GITHUB, "relation": "isSupplementTo"},
                 {"identifier": CODE_CONCEPT_DOI, "relation": "isSupplementTo",
                  "resource_type": "software"},
                 {"identifier": UCI_DOI, "relation": "isDerivedFrom",
@@ -326,7 +337,7 @@ def main() -> int:
     # drop drafting PNGs: the PDFs are the deliverable
     members = [(s, a) for s, a in members if not a.endswith(".png")]
 
-    code_zip = out / f"gas_sensor_recalibration_v{CODE_VERSION}.zip"
+    code_zip = out / f"{REPO}-v{CODE_VERSION}.zip"
     write_zip(members, code_zip)
     (out / f"code_v{CODE_VERSION}_manifest.txt").write_text(
         "\n".join(manifest_lines(members)) + "\n", encoding="utf-8")
@@ -344,7 +355,7 @@ def main() -> int:
     readme.write_text(data_readme(dmembers), encoding="utf-8")
     dmembers.append((readme, "README.md"))
 
-    data_zip = out / f"gas_sensor_recalibration_data_v{DATA_VERSION}.zip"
+    data_zip = out / f"{REPO}-results-v{DATA_VERSION}.zip"
     write_zip(dmembers, data_zip)
     (out / f"data_v{DATA_VERSION}_manifest.txt").write_text(
         "\n".join(manifest_lines(dmembers)) + "\n", encoding="utf-8")
