@@ -84,8 +84,7 @@ CODE_RESULT_GLOBS = [
     "results/tables/*",
     "results/validation/*",
 ]
-CODE_ARTIFACT_GLOBS = ["artifacts/UCI360_*.md", "artifacts/METHOD_CHANGELOG.md",
-                       "artifacts/PROJECT_STATUS.md"]
+CODE_ARTIFACT_GLOBS = ["artifacts/UCI360_*.md", "artifacts/METHOD_CHANGELOG.md"]
 
 DATA_GLOBS = [
     "results/seed_sensitivity/seed_*/tables/benchmark_results.csv",

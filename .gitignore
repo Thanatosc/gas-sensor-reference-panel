@@ -76,3 +76,18 @@ latex/_preview/
 # Built release archives: regenerate with scripts/build_zenodo_packages.py
 release/
 release_check/
+
+# --- not part of the reproducible research -----------------------------------
+# Project convention: the repository carries code, raw results, protocols and
+# dataset manifests. Narrative summaries, status documents, working notes for the
+# withdrawn submission, and the original topic proposal are kept locally only.
+artifacts/ARGUMENT_BLUEPRINT.md
+artifacts/FINAL_COMPLIANCE_AUDIT.md
+artifacts/FINAL_LOCAL_RECHECK.md
+artifacts/LITERATURE_SEARCH_REPORT.md
+artifacts/ANNOTATED_BIBLIOGRAPHY.md
+artifacts/SOURCE_TO_CLAIM_MATRIX.md
+artifacts/PIVOT_DECISION.md
+artifacts/PROJECT_STATUS.md
+artifacts/EXPERIMENT_RESULT.md
+候选一：气体传感器漂移下的再校准策略评测.md
